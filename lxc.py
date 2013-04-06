@@ -15,5 +15,13 @@ class LXC:
         return subprocess.check_call(command, shell=True)
 
 
-lxc = LXC()
-print lxc.shell('ls -l', False)
+    def create(self, node, **kwargs):
+        cmd = "lxc-create -n %s" % (node)
+        return self.shell(cmd)
+
+
+    def destroy(self, node, **kwargs):
+        cmd = "lxc-destroy -n %s" % (node)
+        return self.shell(cmd)
+
+
